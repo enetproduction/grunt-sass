@@ -1,7 +1,9 @@
-/* eslint-disable prefer-object-spread, promise/prefer-await-to-then */
+/* eslint-disable prefer-object-spread, promise/prefer-await-to-then, capitalized-comments */
 'use strict';
 const util = require('util');
 const path = require('path');
+// set node-sass as default
+const sass = require('node-sass');
 
 module.exports = grunt => {
 	grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
@@ -12,7 +14,7 @@ module.exports = grunt => {
 		});
 
 		if (!options.implementation) {
-			grunt.fatal('The implementation option must be passed to the Sass task');
+			options.implementation = sass;
 		}
 		grunt.verbose.writeln(`\n${options.implementation.info}\n`);
 
